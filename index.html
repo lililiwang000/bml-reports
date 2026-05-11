@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Klook BML Reports</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #f3f4f6; color: #111827; }
+  .header { background: linear-gradient(135deg, #1e3a5f, #2563eb); color: #fff; padding: 28px 32px; }
+  .header h1 { font-size: 22px; margin-bottom: 4px; }
+  .header p { opacity: .8; font-size: 13px; }
+  .container { max-width: 860px; margin: 32px auto; padding: 0 16px; }
+  .card { background: #fff; border-radius: 12px; box-shadow: 0 1px 4px rgba(0,0,0,.08); overflow: hidden; }
+  .card-header { padding: 16px 24px; border-bottom: 1px solid #e5e7eb; display: flex; align-items: center; gap: 10px; }
+  .card-header h2 { font-size: 15px; font-weight: 700; }
+  .badge { background: #eff6ff; color: #2563eb; border: 1px solid #bfdbfe; border-radius: 20px; padding: 2px 10px; font-size: 11px; font-weight: 700; margin-left: auto; }
+  table { width: 100%; border-collapse: collapse; }
+  th { background: #f8fafc; font-size: 11px; text-transform: uppercase; letter-spacing: .4px; color: #6b7280; font-weight: 700; padding: 10px 24px; text-align: left; border-bottom: 1px solid #e5e7eb; }
+  td { padding: 14px 24px; border-bottom: 1px solid #f3f4f6; font-size: 13px; vertical-align: middle; }
+  tr:last-child td { border-bottom: none; }
+  tr:hover td { background: #f9fafb; }
+  .report-link { color: #2563eb; font-weight: 700; text-decoration: none; display: flex; align-items: center; gap: 6px; }
+  .report-link:hover { text-decoration: underline; }
+  .report-link::before { content: "📄"; font-size: 14px; }
+  .date-tag { font-size: 12px; color: #6b7280; }
+  .latest { background: #eff6ff; color: #2563eb; border: 1px solid #bfdbfe; border-radius: 10px; padding: 1px 8px; font-size: 10px; font-weight: 700; margin-left: 8px; }
+  .empty { padding: 40px 24px; text-align: center; color: #9ca3af; font-size: 13px; }
+  .footer { text-align: center; font-size: 11px; color: #9ca3af; margin: 24px 0; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>🏨 Klook BML Reports</h1>
+  <p>Metro Osaka · Weekly Hotel Beat/Meet/Lose Monitoring</p>
+</div>
+
+<div class="container">
+  <div class="card">
+    <div class="card-header">
+      <h2>Report Archive</h2>
+      <span class="badge" id="count">1 report</span>
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <th>Report</th>
+          <th>Period</th>
+          <th>Generated</th>
+        </tr>
+      </thead>
+      <tbody id="report-list">
+        <!-- Reports are listed below. Add new rows at the TOP when uploading a new week. -->
+        <tr>
+          <td>
+            <a class="report-link" href="BML_Report_2026-05-10.html">BML Report — Week of May 10, 2026</a>
+            <span class="latest">LATEST</span>
+          </td>
+          <td class="date-tag">Apr 25–30 + May 9</td>
+          <td class="date-tag">May 11, 2026</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="footer">Updated weekly · <a href="https://github.com/lililiwang000/bml-reports" style="color:#9ca3af">GitHub</a></div>
+</div>
+
+<script>
+  const rows = document.querySelectorAll('#report-list tr');
+  const badge = document.getElementById('count');
+  badge.textContent = rows.length + (rows.length === 1 ? ' report' : ' reports');
+  // Remove LATEST badge from all except first row
+  document.querySelectorAll('.latest').forEach((el, i) => { if (i > 0) el.remove(); });
+</script>
+
+</body>
+</html>
